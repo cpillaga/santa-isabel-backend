@@ -14,6 +14,7 @@ app.use(
     })
 );
 
+
 app.use(bodyParser.json());
 
 //habilitar la carpeta public
