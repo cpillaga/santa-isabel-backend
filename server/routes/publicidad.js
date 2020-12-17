@@ -4,6 +4,10 @@ let app = express();
 
 let Publicidad = require("../models/publicidad");
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todas las publicidades
 //=====================================
