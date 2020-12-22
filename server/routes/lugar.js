@@ -191,4 +191,28 @@ app.get('/lugar/buscar/:termino', (req, res) => {
         });
 });
 
+app.get('/lugar/buscar-latlng/:lat&:lng', (req, res) => {
+    let lat = req.params.lat;
+    let lng = req.params.lng;
+    Lugar.findOne({
+            lat: lat,
+            lng: lng
+        })
+        .populate('sector')
+        .sort('nombre')
+        .exec((err, lugar) => {
+            if (err) {
+                res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            res.json({
+                ok: true,
+                lugar
+            });
+        });
+});
+
 module.exports = app;
