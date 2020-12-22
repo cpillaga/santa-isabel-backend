@@ -12,6 +12,12 @@ let lugarSchema = new Schema({
     descripcion: {
         type: String,
     },
+    lat: {
+        type: String,
+    },
+    lng: {
+        type: String,
+    },
     img: {
         type: String,
         required: true,

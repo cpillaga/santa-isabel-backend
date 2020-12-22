@@ -67,6 +67,8 @@ app.post('/lugar', (req, res) => {
     let lugar = new Lugar({
         nombre: body.nombre,
         descripcion: body.descripcion,
+        lat: body.lat,
+        lng: body.lng,
         img: body.img,
         sector: body.sector,
     });
@@ -103,6 +105,8 @@ app.put('/lugar/:id', (req, res) => {
     let descLugar = {
         nombre: body.nombre,
         descripcion: body.descripcion,
+        lat: body.lat,
+        lng: body.lng,
         img: body.img,
         sector: body.sector,
     };
