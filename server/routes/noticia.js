@@ -4,6 +4,10 @@ let Noticia = require('../models/noticia');
 
 let app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todas las noticias
 //=====================================

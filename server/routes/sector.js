@@ -4,6 +4,10 @@ let Sector = require('../models/sector');
 
 let app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todas los sectores
 //=====================================

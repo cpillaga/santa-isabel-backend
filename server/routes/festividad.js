@@ -4,6 +4,10 @@ let Festividad = require('../models/festividad');
 
 let app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todas las festividades
 //=====================================

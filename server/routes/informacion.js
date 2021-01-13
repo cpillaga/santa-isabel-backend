@@ -4,6 +4,10 @@ let Informacion = require('../models/informacion');
 
 let app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todas las informaciones
 //=====================================

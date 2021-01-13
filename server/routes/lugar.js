@@ -4,6 +4,10 @@ let Lugar = require('../models/lugar');
 
 let app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 //=====================================
 //mostrar todos los lugares
 //=====================================
