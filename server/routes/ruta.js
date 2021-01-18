@@ -58,11 +58,12 @@ app.get('/ruta/:id', (req, res) => {
 });
 
 //=====================================
-//crear nuevo ruta
+//crear nuevo ruta ss
 //=====================================
 
 app.post('/ruta', (req, res) => {
     let body = req.body;
+
     let ruta = new Ruta({
         descripcion: body.descripcion
     });
