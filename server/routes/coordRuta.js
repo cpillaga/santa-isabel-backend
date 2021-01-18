@@ -6,6 +6,8 @@ let app = express();
 
 const cors = require('cors');
 
+app.use(cors({ origin: '*' }));
+
 app.get('/coordRuta/:idRuta', (req, res) => {
     let id = req.params.idRuta;
     Coords.find({ ruta: id }, (err, coordsDB) => {
