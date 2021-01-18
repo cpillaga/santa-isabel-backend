@@ -63,3 +63,5 @@ app.post('/coordRuta', (req, res) => {
         });
     });
 });
+
+module.exports = app;
