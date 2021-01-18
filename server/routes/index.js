@@ -9,6 +9,8 @@ app.use(require('./informacion'));
 app.use(require('./noticia'));
 app.use(require('./lugar'));
 app.use(require('./publicidad'));
+app.use(require('./ruta'));
+app.use(require('./coordRuta'));
 
 
 module.exports = app;
