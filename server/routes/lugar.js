@@ -16,7 +16,7 @@ app.get('/lugar', (req, res) => {
     Lugar.find({})
         // .populate('sector','nombre')
         .populate('sector')
-        .sort('titulo')
+        .populate('tipo')
         .exec((err, lugar) => {
             if (err) {
                 return res.status(500).json({
@@ -39,6 +39,7 @@ app.get('/lugar/:id', (req, res) => {
     let id = req.params.id;
     Lugar.findById(id)
         .populate('sector')
+        .populate('tipo')
         .exec((err, lugarDB) => {
             if (!lugarDB) {
                 return res.status(400).json({
@@ -181,6 +182,7 @@ app.get('/lugar/buscar/:termino', (req, res) => {
             nombre: regex
         })
         .populate('sector')
+        .populate('tipo')
         .sort('nombre')
         .exec((err, lugar) => {
             if (err) {
