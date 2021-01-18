@@ -75,6 +75,7 @@ app.post('/lugar', (req, res) => {
         lng: body.lng,
         img: body.img,
         sector: body.sector,
+        tipo: body.tipo
     });
 
     lugar.save((err, lugarBD) => {
@@ -113,6 +114,7 @@ app.put('/lugar/:id', (req, res) => {
         lng: body.lng,
         img: body.img,
         sector: body.sector,
+        tipo: body.tipo
     };
 
     Lugar.findByIdAndUpdate(id, descLugar, {

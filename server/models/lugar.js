@@ -27,6 +27,11 @@ let lugarSchema = new Schema({
         ref: 'Sector',
         required: true,
     },
+    tipo: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tipo',
+        required: true,
+    }
 });
 
 lugarSchema.plugin(uniqueValidator, {
