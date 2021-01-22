@@ -63,6 +63,41 @@ app.get('/lugar/:id', (req, res) => {
         });
 });
 
+
+//=====================================
+//mostrar un lugar por tipo.
+//=====================================
+
+app.get('/lugar/tipo/:idTipo', (req, res) => {
+    let id = req.params.idTipo;
+    Lugar.find({ tipo: id })
+        .populate('sector')
+        .populate('tipo')
+        .exec((err, lugarDB) => {
+            if (!lugarDB) {
+                return res.status(400).json({
+                    ok: false,
+                    err: {
+                        mensaje: 'el id no existe en la tabla lugar'
+                    }
+                });
+            }
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+
+            res.json({
+                ok: true,
+                lugar: lugarDB
+            });
+        });
+});
+
+
 //=====================================
 //crear nuevo lugar
 //=====================================
