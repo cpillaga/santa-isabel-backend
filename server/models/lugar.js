@@ -11,6 +11,11 @@ let lugarSchema = new Schema({
     },
     descripcion: {
         type: String,
+        required: [true, 'La descripción es necesaria']
+    },
+    informacion: {
+        type: String,
+        required: [true, 'La información es necesaria']
     },
     lat: {
         type: String,

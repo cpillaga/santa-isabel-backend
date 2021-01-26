@@ -12,6 +12,6 @@ app.use(require('./publicidad'));
 app.use(require('./ruta'));
 app.use(require('./coordRuta'));
 app.use(require('./tipo'));
-
+app.use(require('./agenda'));
 
 module.exports = app;

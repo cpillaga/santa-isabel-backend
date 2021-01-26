@@ -89,7 +89,6 @@ app.get('/lugar/tipo/:idTipo', (req, res) => {
                 });
             }
 
-
             res.json({
                 ok: true,
                 lugar: lugarDB
@@ -107,6 +106,7 @@ app.post('/lugar', (req, res) => {
     let lugar = new Lugar({
         nombre: body.nombre,
         descripcion: body.descripcion,
+        informacion: body.informacion,
         lat: body.lat,
         lng: body.lng,
         img: body.img,
@@ -146,6 +146,7 @@ app.put('/lugar/:id', (req, res) => {
     let descLugar = {
         nombre: body.nombre,
         descripcion: body.descripcion,
+        informacion: body.informacion,
         lat: body.lat,
         lng: body.lng,
         img: body.img,
