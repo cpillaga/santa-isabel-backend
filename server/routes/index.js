@@ -13,5 +13,6 @@ app.use(require('./ruta'));
 app.use(require('./coordRuta'));
 app.use(require('./tipo'));
 app.use(require('./agenda'));
+app.use(require('./upload'));
 
 module.exports = app;
