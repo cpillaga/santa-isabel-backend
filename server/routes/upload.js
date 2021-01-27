@@ -5,6 +5,10 @@ const path = require('path');
 
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
 app.use(fileUpload());
 
 app.post('/upload', function(req, res) {
