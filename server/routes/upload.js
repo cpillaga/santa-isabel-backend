@@ -40,7 +40,7 @@ app.post('/upload', function(req, res) {
 
     archivo.mv(`uploads/${archivo.name}`, (err) => {
         if (err) {
-            return res, status(500).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
