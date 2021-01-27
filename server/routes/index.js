@@ -2,6 +2,11 @@ const express = require('express');
 
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors({ origin: '*' }));
+
+
 app.use(require('./sector'));
 app.use(require('./actividad'));
 app.use(require('./festividad'));
