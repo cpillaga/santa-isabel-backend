@@ -69,6 +69,11 @@ app.get('/upload/borrar/:nombre', (req, res) => {
 
     if (fs.existsSync(pathFile)) {
         fs.unlinkSync(pathFile);
+
+        res.json({
+            ok: true,
+            message: 'Archivo subido correctamente'
+        });
     }
 });
 
