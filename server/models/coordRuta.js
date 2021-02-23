@@ -9,6 +9,10 @@ let coordSchema = new Schema({
     lng: {
         type: String,
     },
+    orden: {
+        type: Number,
+        required: true
+    },
     ruta: {
         type: Schema.Types.ObjectId,
         ref: 'Ruta',

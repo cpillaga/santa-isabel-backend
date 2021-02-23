@@ -40,6 +40,7 @@ app.post('/coordRuta', (req, res) => {
     let coord = new Coords({
         lat: body.lat,
         lng: body.lng,
+        orden: body.orden,
         ruta: body.ruta
     });
 
