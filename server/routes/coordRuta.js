@@ -11,6 +11,7 @@ app.use(cors({ origin: '*' }));
 app.get('/coordRuta/:idRuta', (req, res) => {
     let id = req.params.idRuta;
     Coords.find({ ruta: id })
+        .sort('orden')
         .exec((err, coordsDB) => {
             if (!coordsDB) {
                 return res.status(400).json({
