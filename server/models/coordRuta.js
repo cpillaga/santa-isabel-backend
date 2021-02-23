@@ -13,7 +13,7 @@ let coordSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Ruta',
         required: true,
-    },
+    }
 });
 
 module.exports = mongoose.model('Coord', coordSchema);
