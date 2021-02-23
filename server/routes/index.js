@@ -16,6 +16,7 @@ app.use(require('./lugar'));
 app.use(require('./publicidad'));
 app.use(require('./ruta'));
 app.use(require('./coordRuta'));
+app.use(require('./senderos'));
 app.use(require('./tipo'));
 app.use(require('./agenda'));
 app.use(require('./upload'));
