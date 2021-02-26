@@ -82,10 +82,7 @@ app.put('/redes/:id', (req, res) => {
         lugar: body.lugar
     };
 
-    Redes.findByIdAndUpdate(id, descRedes, {
-        new: true,
-        // runValidators: true
-    }, (err, redesDB) => {
+    Redes.findByIdAndUpdate(id, descRedes, { new: true }, (err, redesDB) => {
         if (!redesDB) {
             return res.status(400).json({
                 ok: false,
