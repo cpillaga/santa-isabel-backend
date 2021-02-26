@@ -20,5 +20,6 @@ app.use(require('./senderos'));
 app.use(require('./tipo'));
 app.use(require('./agenda'));
 app.use(require('./upload'));
+app.use(require('./redSocial'));
 
 module.exports = app;
