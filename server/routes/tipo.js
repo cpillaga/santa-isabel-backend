@@ -61,7 +61,7 @@ app.get('/tipo/:id', (req, res) => {
 app.get('/tipo/descripcion/:desc', (req, res) => {
     let desc = req.params.desc;
     Tipo.find({ descripcion: desc }).exec((err, tipo) => {
-        if (!tipoDB) {
+        if (!tipo) {
             return res.status(400).json({
                 ok: false,
                 err: {
