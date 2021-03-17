@@ -28,6 +28,26 @@ app.get('/agenda', (req, res) => {
         });
 });
 
+app.get('/agenda/fecha/:fecha', (req, res) => {
+    let fechaI = req.params.fecha + "T00:00:00.000Z";
+    let fechaF = req.params.fecha + "T23:59:59.000Z";
+
+    Agenda.find({ $and: [{ fecha: { $gte: new Date(fechaI) } }, { fecha: { $lt: new Date(fechaF) } }] })
+        .exec((err, agenda) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+            res.json({
+                ok: true,
+                agenda
+            });
+        });
+});
+
+
 //=====================================
 //mostrar una actividad por id.
 //=====================================

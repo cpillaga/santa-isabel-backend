@@ -67,7 +67,6 @@ app.get('/lugar/:id', (req, res) => {
 //=====================================
 //mostrar un lugar por tipo.
 //=====================================
-
 app.get('/lugar/tipo/:idTipo', (req, res) => {
     let id = req.params.idTipo;
     Lugar.find({ tipo: id })
