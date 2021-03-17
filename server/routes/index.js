@@ -22,5 +22,6 @@ app.use(require('./agenda'));
 app.use(require('./upload'));
 app.use(require('./redSocial'));
 app.use(require('./admin'));
+app.use(require('./descargables'));
 
 module.exports = app;

@@ -57,6 +57,34 @@ app.get('/tipo/:id', (req, res) => {
     });
 });
 
+
+app.get('/tipo/descripcion/:desc', (req, res) => {
+    let desc = req.params.desc;
+    Tipo.find({ descripcion: desc }).exec((err, tipo) => {
+        if (!tipoDB) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    mensaje: 'el id no existe en la tabla tipo'
+                }
+            });
+        }
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                err
+            });
+        }
+
+        res.json({
+            ok: true,
+            tipo
+        });
+    });
+
+});
+
+
 //=====================================
 //crear nuevo ruta ss
 //=====================================
