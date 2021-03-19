@@ -2,16 +2,33 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const _ = require('underscore');
-const cors = require('cors');
 
 const SEED = require('../config/config').SEED;
+const cors = require('cors');
+
 const Admin = require('../models/admin');
 
-const { verificaToken } = require('../middlewares/autenticacion');
-
 const app = express();
-
+const { verificaToken } = require('../middlewares/autenticacion');
 app.use(cors({ origin: '*' }));
+
+app.get('/admin', verificaToken, function(req, res) {
+
+    Cliente.find({})
+        .exec((err, admin) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            res.json({
+                ok: true,
+                admin
+            });
+        });
+});
 
 app.post('/admin/login', function(req, res) {
     let body = req.body;
@@ -20,7 +37,7 @@ app.post('/admin/login', function(req, res) {
         if (err) {
             return res.status(500).json({
                 ok: false,
-                message: 'Error al buscar Admin',
+                message: 'Error al buscar Administrador',
                 errors: err
             });
         }
@@ -43,22 +60,20 @@ app.post('/admin/login', function(req, res) {
 
         //Crear un token!!
 
-        adminDB.password = 'null';
+        adminDB.password = null;
 
-        var token = jwt.sign({ admin: adminDB }, SEED); //4 horas
+        var token = jwt.sign({ admin: adminDB }, SEED); //8 horas
 
         res.json({
             ok: true,
             admin: adminDB,
-            token: token,
-            id: adminDB._id
+            token: token
         });
 
     });
 });
 
-
-app.post('/admin', verificaToken, function(req, res) {
+app.post('/admin', function(req, res) {
     let body = req.body;
 
     let admin = new Admin({
@@ -74,6 +89,8 @@ app.post('/admin', verificaToken, function(req, res) {
             });
         }
 
+        adminDB.password = null;
+
         res.json({
             ok: true,
             admin: adminDB
@@ -81,16 +98,10 @@ app.post('/admin', verificaToken, function(req, res) {
     });
 });
 
-
-app.put('/admin/:id', verificaToken, function(req, res) {
+app.put('/admin/:id', [verificaToken], function(req, res) {
     let id = req.params.id;
 
     let body = _.pick(req.body, ['password']);
-
-
-    if (body.password != null) {
-        body.password = bcrypt.hashSync(body.password, 10);
-    }
 
     Admin.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, adminDB) => {
         if (err) {
@@ -100,11 +111,39 @@ app.put('/admin/:id', verificaToken, function(req, res) {
             });
         }
 
-        adminDB.password = 'null';
+        adminDB.password = null;
 
         res.json({
             ok: true,
             admin: adminDB
+        });
+    });
+});
+
+app.delete('/admin/:id', verificaToken, function(req, res) {
+    let id = req.params.id;
+
+    Admin.findByIdAndRemove(id, (err, adminBorrado) => {
+        // Cabecera.findByIdAndUpdate(id, cambiaEstado, { new: true }, (err, cabeceraBorrado) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        }
+
+        if (!adminBorrado) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'Admin no encontrado'
+                }
+            });
+        }
+
+        res.json({
+            ok: true,
+            admin: adminBorrado
         });
     });
 });
