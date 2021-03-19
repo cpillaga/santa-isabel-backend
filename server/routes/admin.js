@@ -58,7 +58,7 @@ app.post('/admin/login', function(req, res) {
 });
 
 
-app.post('/admin', function(req, res) {
+app.post('/admin', verificaToken, function(req, res) {
     let body = req.body;
 
     let admin = new Admin({
