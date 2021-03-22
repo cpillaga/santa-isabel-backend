@@ -8,6 +8,10 @@ let descargableSchema = new Schema({
         type: String,
         unique: true,
         required: [true, 'La descripción es obligatoria']
+    },
+    link: {
+        type: String,
+        required: [true, 'El link o archivo es obligatorio']
     }
 });
 
