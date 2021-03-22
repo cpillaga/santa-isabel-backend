@@ -8,10 +8,6 @@ let fileSchema = new Schema({
         type: String,
         unique: true,
         required: [true, 'La descripcion es obligatoria']
-    },
-    url: {
-        type: String,
-        required: [true, 'El url es obligatorio']
     }
 });
 
