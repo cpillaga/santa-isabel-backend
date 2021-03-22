@@ -60,11 +60,14 @@ app.post('/admin/login', function(req, res) {
             });
         }
 
+        console.log("llega hasta aquí");
         //Crear un token!!
 
         adminDB.password = null;
 
         var token = jwt.sign({ admin: adminDB }, SEED); //8 horas
+
+        console.log("llega hasta aca");
 
         res.json({
             ok: true,
