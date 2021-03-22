@@ -51,6 +51,7 @@ app.post('/admin/login', function(req, res) {
             });
         }
         console.log(body.password + " - " + adminDB.password);
+        console.log(bcrypt.compareSync(body.password, adminDB.password));
         if (!bcrypt.compareSync(body.password, adminDB.password)) {
             return res.status(400).json({
                 ok: false,
