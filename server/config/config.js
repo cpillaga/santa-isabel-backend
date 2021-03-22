@@ -22,7 +22,6 @@ process.env.CADUCIDAD_TOKEN = "96h";
 //  ================================
 //      SEED de autenticacion
 //  ================================
-process.env.SEED = process.eventNames.SEED || "este-es-el-seed-de-desarrollo";
 
 //  ================================
 //                 BD
@@ -36,3 +35,5 @@ if (process.env.NODE_ENV === "dev") {
 }
 
 process.env.URLDB = urlDB;
+
+module.exports.SEED = 'firma-santa-isabel';
