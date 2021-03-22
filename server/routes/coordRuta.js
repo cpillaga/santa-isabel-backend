@@ -66,4 +66,30 @@ app.post('/coordRuta', (req, res) => {
     });
 });
 
+
+app.delete('/coordRuta/:id', (req, res) => {
+    let id = req.params.id;
+
+    Coords.findByIdAndRemove(id, (err, coordsBD) => {
+        if (!coordsBD) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'el id no existe'
+                }
+            });
+        }
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                err
+            });
+        }
+        res.json({
+            ok: true,
+            mensaje: 'coords borrado'
+        });
+    });
+});
+
 module.exports = app;

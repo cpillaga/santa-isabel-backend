@@ -2,6 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const path = require('path');
+const formidable = require('formidable');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.post('/upload', function(req, res) {
     }
 
     let archivo = req.files.archivo;
+
 
     let nombreCortado = archivo.name.split('.');
     let extension = nombreCortado[nombreCortado.length - 1];
@@ -48,6 +50,7 @@ app.post('/upload', function(req, res) {
 
         res.json({
             ok: true,
+            archivo: archivo.name,
             message: 'Archivo subido correctamente'
         });
     });
@@ -76,7 +79,7 @@ app.get('/upload/borrar/:nombre', (req, res) => {
 
         res.json({
             ok: true,
-            message: 'Archivo subido correctamente'
+            message: 'Archivo borrado correctamente'
         });
     }
 });
