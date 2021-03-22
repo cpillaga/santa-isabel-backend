@@ -10,6 +10,7 @@ const Admin = require('../models/admin');
 
 const app = express();
 const { verificaToken } = require('../middlewares/autenticacion');
+
 app.use(cors({ origin: '*' }));
 
 app.get('/admin', verificaToken, function(req, res) {
@@ -49,7 +50,7 @@ app.post('/admin/login', function(req, res) {
                 errors: err
             });
         }
-
+        console.log(body.password + " - " + adminDB.password);
         if (!bcrypt.compareSync(body.password, adminDB.password)) {
             return res.status(400).json({
                 ok: false,
