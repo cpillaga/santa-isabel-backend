@@ -27,13 +27,13 @@ app.post('/upload', function(req, res) {
     let extension = nombreCortado[nombreCortado.length - 1];
 
     //Extensiones permitidas
-    let extensionesValidas = ['json'];
+    let extensionesValidas = ['json', 'pdf'];
 
     if (extensionesValidas.indexOf(extension) < 0) {
         return res.status(400).json({
             ok: false,
             err: {
-                message: 'La extension permitida es JSON'
+                message: 'La extension permitida es JSON y PDF'
             }
         });
     }
