@@ -64,6 +64,8 @@ app.post('/admin/login', function(req, res) {
 
         adminDB.password = null;
 
+        console.log(adminDB);
+        console.log(SEED);
         var token = jwt.sign({ admin: adminDB }, SEED); //8 horas
 
         res.json({
