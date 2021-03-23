@@ -24,7 +24,6 @@ app.post('/upload', function(req, res) {
 
     let archivo = req.files.archivo;
 
-
     let nombreCortado = archivo.name.split('.');
     let extension = nombreCortado[nombreCortado.length - 1];
 

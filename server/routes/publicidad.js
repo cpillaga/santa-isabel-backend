@@ -109,6 +109,8 @@ app.post("/publicidad", (req, res) => {
 
 app.delete("/publicidad/:id", (req, res) => {
     let id = req.params.id;
+
+    console.log(id);
     Publicidad.findByIdAndRemove(id, (err, publicidadDB) => {
         if (err) {
             return res.status(500).json({
@@ -116,6 +118,7 @@ app.delete("/publicidad/:id", (req, res) => {
                 err,
             });
         }
+        console.log("paso 1");
         if (!publicidadDB) {
             return res.status(400).json({
                 ok: false,
@@ -124,6 +127,8 @@ app.delete("/publicidad/:id", (req, res) => {
                 },
             });
         }
+        console.log("paso 2");
+
         res.json({
             ok: true,
             mensaje: "Publicidad eliminada",
