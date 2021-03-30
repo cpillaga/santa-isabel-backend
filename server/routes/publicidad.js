@@ -55,6 +55,7 @@ app.get("/publicidad-type/:id", (req, res) => {
 
 app.get("/publicidad/:id", (req, res) => {
     let id = req.params.id;
+
     Publicidad.findById(id)
         .exec((err, publicidadDB) => {
             if (err) {
