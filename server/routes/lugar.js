@@ -35,7 +35,7 @@ app.get('/lugar', (req, res) => {
 //mostrar un lugar por id.
 //=====================================
 
-app.get('/lugar/:id', (req, res) => {
+app.get('/lugar/id/:id', (req, res) => {
     let id = req.params.id;
     Lugar.findById(id)
         .populate('sector')
